@@ -44,7 +44,7 @@ $js = "
             let titleField = current.parents('tr').find('.title-text');
             let leadField = current.parents('tr').find('.lead-text');
             $('.mail-list-select2').each(function () {
-                if ($(this).attr('id') !== id && $(this).val() === val) {
+                if (val && $(this).attr('id') !== id && $(this).val() === val) {
                     alert('Эта статья уже выбрана!');
                     current.html('<option></option>');
                     return false;
