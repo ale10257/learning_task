@@ -10,8 +10,11 @@ use app\modules\mailList\assets\Select2Asset;
 
 Select2Asset::register($this);
 
+// адрес для получения списка статей для select2 - ajax запрос
 $url_set = Url::to(['search-article']);
+// адрес для получения строки таблицы при нажатии на плюс - ajax запрос
 $url_add = Url::to(['add-entry']);
+// адрес для получения значения соседних полей (title, lead), когда статься выбрана - ajax запрос
 $url_add_lead = Url::to(['lead-entry']);
 
 $js = "
@@ -97,7 +100,5 @@ $this->registerJs($js, \yii\web\View::POS_END);
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
     </div>
-
     <?= Html::endForm() ?>
-
 </div>

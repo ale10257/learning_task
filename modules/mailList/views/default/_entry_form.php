@@ -1,11 +1,8 @@
 <?php
-
 /* @var $minus bool */
 /* @var $entry \app\modules\mailList\models\MailingListEntry */
 /* @var $this \yii\web\View */
-
 /* @var $id null|string */
-
 
 use yii\helpers\Html;
 use yii\helpers\Url;
