@@ -1,6 +1,5 @@
 <?php
 
-
 namespace app\modules\mailList\services;
 
 use app\modules\mailList\models\MailingList;
