@@ -47,7 +47,9 @@ class MailListCreator
     public function setEntryArr(array $entry_arr)
     {
         foreach ($entry_arr as $entry_model) {
-            $entry_model->article_arr[$entry_model->article_id] = $entry_model->article->title;
+            if (!empty($entry_model->article_id)) {
+                $entry_model->article_arr[$entry_model->article_id] = $entry_model->article->title;
+            }
         }
         return $entry_arr;
     }
