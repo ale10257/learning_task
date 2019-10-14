@@ -25,14 +25,18 @@ class MailListCreator
         }
         $entry_arr = $this->getEntryArr($post, $model);
         MailingListEntry::deleteAll(['mailing_list_id' => $model->id]);
+        $error = false;
         foreach ($entry_arr as $item) {
             if (!$item->save()) {
-                return $this->returnError($transaction, $model, $entry_arr);
+                $error = true;
             }
+        }
+        if ($error) {
+            return $this->returnError($transaction, $model, $entry_arr);
         }
         $transaction->commit();
         return [
-            'error' => false
+            'error' => $error
         ];
     }
 
