@@ -94,7 +94,7 @@ $this->registerJs($js, \yii\web\View::POS_END);
         <?php $i = 0 ?>
         <?php foreach ($entries as $entry) : ?>
             <?php $minus = $i == 0 ? false : true ?>
-            <?= $this->render('_entry_form', ['entry' => $entry, 'minus' => $minus, 'id' => null]) ?>
+            <?= $this->render('_entry_form', ['entry' => $entry, 'minus' => $minus, 'id' => uniqid()]) ?>
             <?php $i++ ?>
         <?php endforeach ?>
     </table>

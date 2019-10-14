@@ -2,14 +2,11 @@
 /* @var $minus bool */
 /* @var $entry \app\modules\mailList\models\MailingListEntry */
 /* @var $this \yii\web\View */
-/* @var $id null|string */
+/* @var $id string */
 
 use yii\helpers\Html;
 use yii\helpers\Url;
 
-if (empty($id)) {
-    $id = uniqid();
-}
 ?>
 <tr>
     <td style="max-width: 250px; min-width: 250px;">
