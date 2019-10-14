@@ -80,6 +80,7 @@ $this->registerJs($js, \yii\web\View::POS_END);
 
     <div class="form-group">
         <?= Html::textInput($model->formName() . '[title]', $model->title, ['class' => 'form-control']) ?>
+        <?= $this->render('_form_error', ['model' => $model, 'field' => 'title']) ?>
     </div>
 
     <table class="table table-bordered">

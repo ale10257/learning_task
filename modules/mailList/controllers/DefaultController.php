@@ -60,32 +60,27 @@ class DefaultController extends Controller
         $model = new MailingList();
         $entries = [new MailingListEntry()];
         if (Yii::$app->request->isPost) {
-            try {
-                $this->listCreator->create($model);
+            $result = $this->listCreator->create($model);
+            if (!$result['error']) {
                 return $this->redirect(['view', 'id' => $model->id]);
-            } catch (\Exception $e) {
-                Yii::$app->session->setFlash('error', $e->getMessage());
             }
+            $model = $result['model'];
+            $entries = $result['entries'];
         }
-
         return $this->render('create', compact('model', 'entries'));
     }
 
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-        $entries = [];
-        foreach ($model->mailingListEntries as $entry) {
-            $entry->article_arr[$entry->article_id] = $entry->article->title;
-            $entries[] = $entry;
-        }
+        $entries = $this->listCreator->setEntryArr($model->mailingListEntries);
         if (Yii::$app->request->isPost) {
-            try {
-                $this->listCreator->create($model);
+            $result = $this->listCreator->create($model);
+            if (!$result['error']) {
                 return $this->redirect(['view', 'id' => $model->id]);
-            } catch (\Exception $e) {
-                Yii::$app->session->setFlash('error', $e->getMessage());
             }
+            $model = $result['model'];
+            $entries = $result['entries'];
         }
 
         return $this->render('update', compact('model', 'entries'));

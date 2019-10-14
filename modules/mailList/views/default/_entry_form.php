@@ -19,6 +19,7 @@ if (empty($id)) {
                 'required' => true,
                 'class' => 'mail-list-select2',
             ]) ?>
+        <?= $this->render('_form_error', ['model' => $entry, 'field' => 'article_id']) ?>
     </td>
     <td>
         <?php $value = !empty($entry->article_id) ? $entry->article->title : null ?>
@@ -29,6 +30,7 @@ if (empty($id)) {
             'class' => 'form-control lead-text',
             'required' => true,
         ]) ?>
+        <?= $this->render('_form_error', ['model' => $entry, 'field' => 'lead']) ?>
     </td>
     <td style="padding-top: 15px;" class="text-center">
         <?= Html::button('<span style="font-size: 20px;">+</span>',
